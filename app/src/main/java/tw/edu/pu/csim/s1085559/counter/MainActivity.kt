@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(),
     }
 
         txv.text = counter.toString()
-        return false
+        return true
     }
 }
 
