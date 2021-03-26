@@ -15,6 +15,12 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         txv.text = counter.toString()
         txv.setOnClickListener(this)
         btn3.setOnClickListener(this)
+        btnHappy.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                counter=(1..100).random()
+                txv.text = counter.toString()
+            }
+        })
     }
 
     fun Add(v: View) {
