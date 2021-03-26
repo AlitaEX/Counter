@@ -8,13 +8,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.*
         var counter: Int = 0
 
-class MainActivity : AppCompatActivity(),View.OnClickListener {
+class MainActivity : AppCompatActivity(),
+    View.OnClickListener ,View.OnLongClickListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         txv.text = counter.toString()
         txv.setOnClickListener(this)
+        txv.setOnLongClickListener(this)
         btn3.setOnClickListener(this)
+        img.setOnLongClickListener(this)
+
         btnHappy.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
                 counter=(1..100).random()
@@ -34,12 +39,23 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        if(v==txv){
+        if(v==txv || v==btn){
             counter++
         }else {
             counter = 0
         }
         txv.text = counter.toString()
+    }
+
+    override fun onLongClick(v: View?): Boolean {
+        if (v == txv){
+            counter += 2
+    }else{
+            counter--
+    }
+
+        txv.text = counter.toString()
+        return false
     }
 }
 
