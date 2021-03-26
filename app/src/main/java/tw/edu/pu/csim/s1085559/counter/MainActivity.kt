@@ -8,11 +8,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.*
         var counter: Int = 0
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         txv.text = counter.toString()
+        txv.setOnClickListener(this)
+        btn3.setOnClickListener(this)
     }
 
     fun Add(v: View) {
@@ -24,4 +26,14 @@ class MainActivity : AppCompatActivity() {
         }
         txv.text = counter.toString()
     }
+
+    override fun onClick(v: View?) {
+        if(v==txv){
+            counter++
+        }else {
+            counter = 0
+        }
+        txv.text = counter.toString()
+    }
 }
+
